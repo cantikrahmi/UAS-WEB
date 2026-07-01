@@ -53,3 +53,11 @@ Berikut adalah alur jalannya infrastruktur aplikasi dari lingkungan lokal hingga
                     ▼                                             │
          [ Web App Container ] <──────────────────────────────────┘
          (Port Internal: 9876)
+
+📁 Struktur Repositori
+Plaintext
+.
+├── .github/workflows/  # Berkas otomatisasi deployment (CI/CD Pipeline)
+├── Dockerfile          # Spesifikasi pembuatan image container aplikasi
+├── index.html          # Kode sumber utama halaman web CatCare
+└── README.md           # Dokumentasi teknis proyek UAS
