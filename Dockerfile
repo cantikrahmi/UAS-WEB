@@ -5,15 +5,18 @@ services:
     image: uas-web-website:latest
     build: .
     container_name: cat-adoption
-    restart: always
-    # Kita tidak perlu mengekspos port 8765 ke luar lagi karena akan lewat Nginx Docker
-
-  nginx:
-    image: nginx:alpine
-    container_name: nginx-proxy
     ports:
-      - "80:90"
+      - "8090:80" # <-- JATAH PORT WEB UTAMA MEREKA! (Nembak port 80 internal container)
+    restart: always
+
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: monitoring_cat_adoption
+    ports:
+      - "3012:3001" # <-- JATAH PORT MONITORING UPTIME KUMA MEREKA!
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
-    depends_on:
-      - web
+      - uptime-kuma-cat-data:/app/data
+    restart: always
+
+volumes:
+  uptime-kuma-cat-data:
