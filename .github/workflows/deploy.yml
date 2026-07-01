@@ -1,0 +1,26 @@
+name: Deploy Website CatCare to VPS
+
+on:
+  push:
+    branches:
+      - main  # Otomatis jalan setiap kamu push ke branch main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository Code
+      uses: actions/checkout@v3
+
+    - name: Deploy to VPS via SSH
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.VPS_HOST }}       # IP Address VPS kelompokmu
+        username: cantikrahmi               # Username SSH kamu
+        key: ${{ secrets.SSH_PRIVATE_KEY }} # SSH Private Key untuk login otomatis
+        script: |
+          cd /home/cantikrahmi/UAS-WEB
+          git pull origin main
+          # Merestart container aplikasi CatCare agar kodenya terupdate
+          docker restart catcare-container || true
