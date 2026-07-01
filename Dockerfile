@@ -12,7 +12,7 @@ services:
     image: nginx:alpine
     container_name: nginx-proxy
     ports:
-      - "80:80"
+      - "80:90"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
