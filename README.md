@@ -5,7 +5,7 @@ Repository ini berisi dokumentasi deployment, konfigurasi reverse proxy, serta a
 
 ---
 
-## 👥 Anggota Kelompok (Kelompok Canmie)
+## 👥 Anggota Kelompok 
 *   [CANTIK RAHMI SHOFIYANTI] - [251572010029]
 
 
